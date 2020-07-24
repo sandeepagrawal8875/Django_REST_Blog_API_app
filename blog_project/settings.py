@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount', # new
     'dj_rest_auth', # new
     'dj_rest_auth.registration', # new
+    'rest_framework_swagger', # new
+    'drf_yasg', #new
 
     # Local
     'posts.apps.PostsConfig',
@@ -135,13 +137,18 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ],
+        ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-    ],
+        ],
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
 
 SITE_ID = 1 # new
+
+SWAGGER_SETTINGS = {
+    'LOGIN_URL': 'rest_framework:login',
+    'LOGOUT_URL': 'rest_framework:logout',
+}
